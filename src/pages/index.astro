@@ -1,0 +1,54 @@
+---
+import Layout from "@layouts/Layout.astro";
+import FancyTable from "@components/FancyTable.astro";
+---
+
+<Layout title="Hyperscript-Flavored Site">
+  <main>
+    <h1>This is Heading 1</h1>
+    <h2>This is Heading 2</h2>
+    <h3>This is Heading 3</h3>
+    <h4>This is Heading 4</h4>
+    <h5>This is Heading 5</h5>
+    <h6>This is Heading 6</h6>
+
+    <p>
+      This is paragraph 1. This is paragraph 1. This is paragraph 1. This is
+      paragraph 1. This is paragraph 1. This is paragraph 1. This is paragraph
+      1. This is paragraph 1. This is paragraph 1. This is paragraph 1. This is
+      paragraph 1.
+    </p>
+    <hr />
+    <p style="text-align: left;">This</p>
+    <p style="text-align: center;">Is</p>
+    <p style="text-align: right;">Paragraph Alignment</p>
+    <hr />
+    <FancyTable />
+    <hr />
+
+    <form class="table rows">
+      <p><label for="inp">Label</label> <input id="inp" /></p>
+    </form>
+    <hr />
+
+    <div class="box bad">
+      <strong class="block titlebar">Error</strong>
+      Task failed successfully
+    </div>
+    <hr />
+
+    <h2>A form with aligned labels and inputs.</h2>
+    <form class="table rows">
+      <p>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" />
+      </p>
+      <p>
+        <label for="adr">Address</label>
+        <input type="text" id="adr" name="adr" />
+      </p>
+    </form>
+
+    <button hx-post="/api/clicked" hx-swap="outerHTML"> Click Me </button>
+  </main>
+</Layout>

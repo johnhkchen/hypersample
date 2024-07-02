@@ -1,0 +1,23 @@
+{
+  "name": "hypersample",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "astro": "^4.11.3",
+    "astro-htmx": "^1.0.6",
+    "htmx.org": "^1.9.12",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.2",
+    "prettier-plugin-astro": "^0.14.0"
+  }
+}
