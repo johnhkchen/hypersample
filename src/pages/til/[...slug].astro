@@ -1,0 +1,26 @@
+---
+// Article page for each TIL entry, content stored as MDX
+// Uses the content collection
+import { type CollectionEntry, getCollection } from "astro:content";
+
+// Create paths for each post in the TIL content collection
+export async function getStaticPaths() {
+  // Get all 'TIL' articles
+  const posts = await getCollection("til");
+  // Map them and their props to the slugs designated in the post's frontmatter
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+import Layout from "@layouts/Layout.astro";
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title="Test Post">
+  <main>
+    <Content />
+  </main>
+</Layout>

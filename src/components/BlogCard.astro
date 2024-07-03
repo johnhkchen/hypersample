@@ -4,9 +4,10 @@ interface Props {
   subtitle: string;
   date: string;
   url: string;
+  slug: string;
 }
 
-const { title, subtitle, date, url } = Astro.props;
+const { title, subtitle, date, url, slug } = Astro.props;
 ---
 
 <div class="box">
@@ -20,8 +21,8 @@ const { title, subtitle, date, url } = Astro.props;
   <div class="f-switch">
     <sub-title class="flex-grow:1">{subtitle}</sub-title>
     <div class="f-row flex-grow:0 center">
-      <!-- <a class="chip ok" href="/til/astro-vitest">Post</a> -->
-      <a class="chip info" href={url}>Page</a>
+      <a class="chip ok" href={`/til/${slug}`}>Blog</a>
+      <a class="chip info" href={url}>More</a>
     </div>
   </div>
 </div>

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@astrojs/mdx": "^3.1.2",
     "astro": "^4.11.3",
     "astro-htmx": "^1.0.6",
     "htmx.org": "^1.9.12",
