@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  date: string;
+  url: string;
+}
+
+const { title, subtitle, date, url } = Astro.props;
+---
+
+<div class="box">
+  <strong class="block titlebar">
+    <div class="f-row">
+      <h3 class="flex-grow:1">{title}</h3>
+      <p>{date}</p>
+    </div>
+  </strong>
+  <br />
+  <div class="f-switch">
+    <sub-title class="flex-grow:1">{subtitle}</sub-title>
+    <div class="f-row flex-grow:0 center">
+      <!-- <a class="chip ok" href="/til/astro-vitest">Post</a> -->
+      <a class="chip info" href={url}>Page</a>
+    </div>
+  </div>
+</div>

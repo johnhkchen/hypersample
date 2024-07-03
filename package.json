@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "test": "vitest",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
@@ -11,13 +12,18 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@astrojs/prism": "^3.1.0",
     "astro": "^4.11.3",
     "astro-htmx": "^1.0.6",
     "htmx.org": "^1.9.12",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "jsdom": "^24.1.0",
     "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0"
-  }
+    "prettier-plugin-astro": "^0.14.0",
+    "vitest": "^1.6.0"
+  },
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a"
 }

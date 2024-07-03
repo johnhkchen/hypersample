@@ -1,9 +1,13 @@
 ---
+import { Code } from "astro:components";
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout>
+<Layout title="TIL about Missing Style">
   <main>
     <h1>Missing Style</h1>
+    <figure>
+      <Code code={`<p>Hello World!</p>`} lang="html" theme="houston" />
+    </figure>
   </main>
 </Layout>

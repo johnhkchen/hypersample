@@ -6,3 +6,7 @@ fmt:
 
 dev:
 	pnpm dev
+
+windows:
+	# You can use these commands using this format:
+	# just --shell powershell.exe --shell-arg -c windows

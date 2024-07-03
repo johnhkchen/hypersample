@@ -1,24 +1,22 @@
 ---
+import BlogCard from "@components/BlogCard.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="Today I learned">
   <main>
     <h1>TIL about...</h1>
-
-    <ul>
-      <li>
-        <div class="box">
-          <strong class="block titlebar">Missing Style</strong>
-          <div class="f-col">
-            <br />A minimalist CSS framework for small projects
-            <div class="f-row justify-content:end">
-              <a class="chip ok" href="/til/missingstyle"> Blogpost </a>
-              <a class="chip info" href="https://missing.style/"> Visit </a>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
+    <BlogCard
+      title="Missing Style"
+      subtitle="A minimalist CSS framework for small projects"
+      date="Jul 1 2024"
+      url="https://missing.style/"
+    />
+    <BlogCard
+      title="Vitest in Astro"
+      subtitle="Using JSDOM and Vitest to unit test Astro Pages and Components"
+      date="Jul 3 2024"
+      url="https://docs.astro.build/en/guides/testing/"
+    />
   </main>
 </Layout>
