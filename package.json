@@ -11,8 +11,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.7.0",
     "@astrojs/mdx": "^3.1.2",
+    "@types/alpinejs": "^3.13.10",
+    "alpinejs": "^3.14.1",
     "astro": "^4.11.3",
     "astro-htmx": "^1.0.6",
     "htmx.org": "^1.9.12",

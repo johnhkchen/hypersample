@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div x-data="{ expanded: false }">
+  <h2 @click="expanded = ! expanded">{title}</h2>
+  <div x-show="expanded" x-collapse>
+    <slot />
+  </div>
+</div>

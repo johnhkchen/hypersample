@@ -21,8 +21,10 @@ const { title, subtitle, date, url, slug } = Astro.props;
   <div class="f-switch">
     <sub-title class="flex-grow:1">{subtitle}</sub-title>
     <div class="f-row flex-grow:0 center">
-      <a class="chip ok" href={`/til/${slug}`}>Blog</a>
-      <a class="chip info" href={url}>More</a>
+      <a class="chip ok" href={`/til/${slug}`}>Read</a>
+      <a href={url} aria-label="Explore">
+        <button class="iconbutton" type="button">→</button>
+      </a>
     </div>
   </div>
 </div>

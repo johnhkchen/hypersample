@@ -1,38 +1,48 @@
 ---
 import FancyTable from "@components/FancyTable.astro";
+import Collapse from "@components/Collapse.astro";
 ---
 
 <h1>HTML Tricks</h1>
 <aside>This page contains some useful HTML tricks.</aside>
-<h2>Text Formatting</h2>
-<p style="text-align: left;">This</p>
-<p style="text-align: center;">Is</p>
-<p style="text-align: right;">Paragraph Alignment</p>
 <hr />
-<h2>Flexbox</h2>
-
-<h2>Tables</h2>
-<FancyTable />
+<Collapse title="Text Formatting">
+  <p style="text-align: left;">This</p>
+  <p style="text-align: center;">Is</p>
+  <p style="text-align: right;">Paragraph Alignment</p>
+</Collapse>
+<hr />
+<Collapse title="Flexbox" />
+<hr />
+<Collapse title="Tables">
+  <FancyTable />
+</Collapse>
 <hr />
 
-<h2>Forms</h2>
-<form class="table rows">
-  <p>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" />
-  </p>
-  <p>
-    <label for="adr">Address</label>
-    <input type="text" id="adr" name="adr" />
-  </p>
-</form>
+<Collapse title="Forms">
+  <form class="table rows">
+    <p>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" />
+    </p>
+    <p>
+      <label for="adr">Address</label>
+      <input type="text" id="adr" name="adr" />
+    </p>
+  </form>
+</Collapse>
+<hr />
 
-<h2>Components</h2>
+<Collapse title="Components">
+  <div class="box bad">
+    <strong class="block titlebar">Error</strong>
+    Task failed successfully
+  </div>
+</Collapse>
+<hr />
 
-<div class="box bad">
-  <strong class="block titlebar">Error</strong>
-  Task failed successfully
-</div>
-
-<h2>HTMX</h2>
-<button hx-post="/api/clicked" hx-swap="outerHTML"> Click Me </button>
+<Collapse title="HTMX">
+  <p>Lorem ipsum</p>
+  <button hx-post="/api/clicked" hx-swap="outerHTML"> Click Me </button>
+</Collapse>
+<hr />

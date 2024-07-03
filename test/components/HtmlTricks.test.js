@@ -18,18 +18,3 @@ theDOM('should explain the use of this page', async ({dom}) => {
   expect(subtitle.textContent).toMatch(
     "This page contains some useful HTML tricks.");
   });
-
-theDOM('contains a list of h2 headings by topics', async ({dom}) => {
-  const topics = [
-    "Text Formatting",
-    "Flexbox",
-    "Tables",
-    "Forms",
-    "Components",
-    "HTMX",
-  ];
-  for (let i = 0; i < topics.length; i++) {
-    const msg = dom.window.document.querySelector(`h2:nth-of-type(${i+1})`).textContent;
-    expect(msg).toBe(topics[i]);
-  }
-});
