@@ -22,7 +22,7 @@ const { title, subtitle, date, url, slug } = Astro.props;
     <sub-title class="flex-grow:1">{subtitle}</sub-title>
     <div class="f-row flex-grow:0 center" hx-boost="true">
       <a class="chip ok"
-        href={`/til/${slug}`}
+        href={`/til/${slug}/`}
         hx-target="closest .f-switch"
         hx-swap="afterend" 
       >
