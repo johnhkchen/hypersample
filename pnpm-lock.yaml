@@ -32,6 +32,9 @@ importers:
       htmx.org:
         specifier: ^1.9.12
         version: 1.9.12
+      missing.css:
+        specifier: ^1.1.2
+        version: 1.1.2
       typescript:
         specifier: ^5.5.3
         version: 5.5.3
@@ -1606,6 +1609,9 @@ packages:
   mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
+
+  missing.css@1.1.2:
+    resolution: {integrity: sha512-B5pipExXhpdpJOMmdt8SxqQgtKhOlHKt7OYe93n9MhAidcxYIDy8bIXd4v2PxOeroFKP6EquETtKNpouSdVDrw==}
 
   mlly@1.7.1:
     resolution: {integrity: sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==}
@@ -4388,6 +4394,8 @@ snapshots:
   mimic-fn@2.1.0: {}
 
   mimic-fn@4.0.0: {}
+
+  missing.css@1.1.2: {}
 
   mlly@1.7.1:
     dependencies:

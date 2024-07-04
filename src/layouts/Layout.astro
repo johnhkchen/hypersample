@@ -2,11 +2,10 @@
 interface Props {
   title: string;
 }
-
 const { title } = Astro.props;
-
 import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
+import '@styles/missing.min.css';
 ---
 
 <!doctype html>
@@ -22,7 +21,6 @@ import Footer from "@components/Footer.astro";
       defer
       src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
     ></script>
-    <link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.2" />
   </head>
   <Navbar />
   <body>

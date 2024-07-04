@@ -5,8 +5,6 @@ pubDate: "2024-07-01"
 url: "https://missing.style/"
 ---
 
-# Missing Style
-
 ## What is missing style?
 
 ## How did I use it?
