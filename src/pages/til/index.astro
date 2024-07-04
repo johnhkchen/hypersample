@@ -1,24 +1,28 @@
 ---
 import BlogCard from "@components/BlogCard.astro";
 import Layout from "@layouts/Layout.astro";
+
+// Look up the TIL content collection
+import { getCollection, getEntry } from "astro:content";
+const allPosts = await getCollection("til");
+const articles = allPosts
+  .toSorted((a, b) => (a.data.pubDate < b.data.pubDate ? -1 : 1))
+  .reverse();
 ---
 
 <Layout title="Today I learned">
   <main>
     <h1>TIL about...</h1>
-    <BlogCard
-      title="Missing Style"
-      subtitle="A minimalist CSS framework for small projects"
-      date="Jul 1 2024"
-      url="https://missing.style/"
-      slug="missing-style"
-    />
-    <BlogCard
-      title="Vitest in Astro"
-      subtitle="Using JSDOM and Vitest to unit test Astro Pages and Components"
-      date="Jul 3 2024"
-      url="https://docs.astro.build/en/guides/testing/"
-      slug="astro-vitest"
-    />
+    {
+      articles.map((p) => (
+        <BlogCard
+          title={p.data.title}
+          subtitle={p.data.description}
+          date={p.data.pubDate}
+          url={p.data.url}
+          slug={p.slug}
+        />
+      ))
+    }
   </main>
 </Layout>

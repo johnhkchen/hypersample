@@ -1,7 +1,8 @@
 ---
 title: "Missing Style"
 description: "A minimalist CSS framework for small projects"
-pubDate: "Jul 1 2024"
+pubDate: "2024-07-01"
+url: "https://missing.style/"
 ---
 
 # Missing Style
