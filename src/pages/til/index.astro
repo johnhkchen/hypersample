@@ -5,9 +5,8 @@ import Layout from "@layouts/Layout.astro";
 // Look up the TIL content collection
 import { getCollection, getEntry } from "astro:content";
 const allPosts = await getCollection("til");
-const articles = allPosts
-  .toSorted((a, b) => (a.data.pubDate < b.data.pubDate ? -1 : 1))
-  .reverse();
+const newest = (a, b) => (a.data.pubDate < b.data.pubDate ? -1 : 1);
+const articles = allPosts.toSorted(newest).reverse();
 ---
 
 <Layout title="Today I learned">
