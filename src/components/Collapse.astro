@@ -6,7 +6,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div x-data="{ expanded: false }">
+<div id={`html-tricks-${title.toLowerCase()}`} x-data="{ expanded: false }">
   <h2 @click="expanded = ! expanded">{title}</h2>
   <div x-show="expanded" x-collapse>
     <slot />

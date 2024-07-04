@@ -6,3 +6,108 @@ url: "https://docs.astro.build/en/guides/testing/"
 ---
 
 Testing Astro components with Vitest is fairly straightforward.
+
+Let's look at one of the test files this site uses:
+
+```js
+import { experimental_AstroContainer as Astro } from "astro/container";
+import { expect, it } from "vitest";
+import { JSDOM } from "jsdom";
+import HtmlTricks from "@components/HtmlTricks.astro";
+
+// helper aliases to query
+const wdqs = (dom, sel) => dom.window.document.querySelector(sel);
+const wdqsa = (dom, sel) => dom.window.document.querySelectorAll(sel);
+
+// Extend tests with JSDOM object as a text fixture
+const theDOM = it.extend({
+  dom: async ({}, use) => {
+    const container = await Astro.create();
+    const dom = new JSDOM(await container.renderToString(HtmlTricks));
+    await use(dom);
+  },
+});
+
+function numMentions(dom, selector, text) {
+  const elements = wdqsa(dom, selector);
+  let n = 0;
+  for (const elem of elements) {
+    n += elem.textContent == text ? 1 : 0;
+  }
+  return n;
+}
+
+theDOM("explains the use of this page", async ({ dom }) => {
+  const headline = wdqs(dom, "h1").textContent;
+  expect(headline).toBe("HTML Tricks");
+  const subtitle = wdqs(dom, "aside");
+  expect(subtitle.textContent).toMatch(
+    "This page contains some useful HTML tricks.",
+  );
+});
+
+const topics = [
+  "Text Formatting",
+  "Flexbox",
+  "Grid",
+  "Forms",
+  "Components",
+  "HTMX",
+  "Cats",
+];
+for (const topic of topics) {
+  theDOM(`uniquely mentions ${topic}`, async ({ dom }) => {
+    expect(numMentions(dom, "h2", topic)).toBe(1);
+  });
+}
+
+theDOM(
+  "flex has button that says 'Learn More about CSS Flexbox'",
+  async ({ dom }) => {
+    const e = wdqs(dom, "#html-tricks-flexbox > div > button");
+    expect(e.textContent).toBe("Learn More about CSS Flexbox");
+  },
+);
+
+theDOM(
+  "flex's button makes hx-get to '/api/flex/', hx-swap 'outerHTML'",
+  async ({ dom }) => {
+    const e = wdqs(dom, "#html-tricks-flexbox > div > button");
+    expect(e.getAttribute("hx-get")).toBe("/api/flex/");
+    expect(e.getAttribute("hx-swap")).toBe("outerHTML");
+  },
+);
+
+theDOM(
+  "grid has button that says 'Learn More about CSS Grid'",
+  async ({ dom }) => {
+    const e = wdqs(dom, "#html-tricks-grid > div > button");
+    expect(e.textContent).toBe("Learn More about CSS Grid");
+  },
+);
+
+theDOM(
+  "grid's button makes hx-get to '/api/grid', hx-swap 'outerHTML'",
+  async ({ dom }) => {
+    const e = wdqs(dom, "#html-tricks-grid > div > button");
+    expect(e.getAttribute("hx-get")).toBe("/api/grid/");
+    expect(e.getAttribute("hx-swap")).toBe("outerHTML");
+  },
+);
+
+theDOM(
+  "should contain at least 3 images of cats, including with alt text",
+  async ({ dom }) => {
+    const imgs = wdqsa(dom, "img");
+    let n = 0;
+    for (const img of imgs) {
+      const hasCats = (
+        img.alt.includes("cat") || 
+        img.alt.includes("kitten")
+      );
+      n += hasCats ? 1 : 0;
+    }
+    expect(n).toBeGreaterThan(2);
+  },
+);
+```

@@ -1,8 +1,8 @@
-import { experimental_AstroContainer as AstroContainer } from 'astro/container';
-import { expect, it } from 'vitest';
-import { JSDOM } from 'jsdom';
-import { faker } from '@faker-js/faker';
-import BlogCard from '@components/BlogCard.astro';
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
+import { expect, it } from "vitest";
+import { JSDOM } from "jsdom";
+import { faker } from "@faker-js/faker";
+import BlogCard from "@components/BlogCard.astro";
 
 const theDOM = it.extend({
   title: async ({}, use) => {
@@ -21,50 +21,53 @@ const theDOM = it.extend({
     const url = faker.internet.url();
     await use(url);
   },
-  slug: async ({title}, use) => {
+  slug: async ({ title }, use) => {
     // snake case
-    const slug = title.replace(/\W+/g, " ")
+    const slug = title
+      .replace(/\W+/g, " ")
       .split(/ |\B(?=[A-Z])/)
-      .map(word => word.toLowerCase())
-      .join('-');
+      .map((word) => word.toLowerCase())
+      .join("-");
     await use(slug);
   },
-  dom: async ({title, subtitle, date, url, slug}, use) => {
+  dom: async ({ title, subtitle, date, url, slug }, use) => {
     const container = await AstroContainer.create();
-    const dom = new JSDOM(await container.renderToString(BlogCard, {
-      props: {
-        title: title,
-        subtitle: subtitle,
-        date: date,
-        url: url,
-        slug: slug,
-      },
-    }));
-    await use(dom)
-  }
+    const dom = new JSDOM(
+      await container.renderToString(BlogCard, {
+        props: {
+          title: title,
+          subtitle: subtitle,
+          date: date,
+          url: url,
+          slug: slug,
+        },
+      }),
+    );
+    await use(dom);
+  },
 });
 
-theDOM('has title in <h3>', async ({title, dom}) => {
+theDOM("has title in <h3>", async ({ title, dom }) => {
   const el = dom.window.document.querySelector("h3");
   expect(el.textContent).toBe(title);
 });
 
-theDOM('shows date in <p>', async ({date, dom}) => {
+theDOM("shows date in <p>", async ({ date, dom }) => {
   const el = dom.window.document.querySelector("p");
   expect(el.textContent).toBe(date);
 });
 
-theDOM('has subtitle in <sub-title>', async ({subtitle, dom}) => {
+theDOM("has subtitle in <sub-title>", async ({ subtitle, dom }) => {
   const el = dom.window.document.querySelector(`sub-title`);
   expect(el.textContent).toBe(subtitle);
 });
 
-theDOM('references article slug in <a> element', async ({slug, dom}) => {
+theDOM("references article slug in <a> element", async ({ slug, dom }) => {
   const el = dom.window.document.querySelector("a");
   expect(el.href).toMatch(slug);
 });
 
-theDOM('shows prop url in another <a> element', async ({url, dom}) => {
+theDOM("shows prop url in another <a> element", async ({ url, dom }) => {
   const el = dom.window.document.querySelector("a:nth-of-type(2)");
   expect(el.href).toMatch(url);
 });

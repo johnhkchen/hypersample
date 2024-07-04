@@ -12,7 +12,17 @@ import Collapse from "@components/Collapse.astro";
   <p style="text-align: right;">Paragraph Alignment</p>
 </Collapse>
 <hr />
-<Collapse title="Flexbox" />
+<Collapse title="Flexbox">
+  <button hx-get="/api/flex/" hx-swap="outerHTML"
+    >Learn More about CSS Flexbox</button
+  >
+</Collapse>
+<hr />
+<Collapse title="Grid">
+  <button hx-get="/api/grid/" hx-swap="outerHTML"
+    >Learn More about CSS Grid</button
+  >
+</Collapse>
 <hr />
 <Collapse title="Tables">
   <FancyTable />
@@ -44,5 +54,28 @@ import Collapse from "@components/Collapse.astro";
 <Collapse title="HTMX">
   <p>Lorem ipsum</p>
   <button hx-get="/api/clicked" hx-swap="outerHTML"> Click Me </button>
+</Collapse>
+<hr />
+
+<Collapse title="Cats">
+  <img
+    data-src="https://www.litter-robot.com/media/wysiwyg/orange-tabby-outside.png"
+    alt="orange tabby cat outside"
+    width="1000"
+    height="812"
+    src="https://www.litter-robot.com/media/wysiwyg/orange-tabby-outside.png"
+  />
+  <img
+    src="https://image.petmd.com/files/inline-images/black-cat-breeds-american-shorthair.jpeg?VersionId=FHXiYOmOykNtIdlZ.V5LQC_E8wXzlgyG"
+    alt="yellow-eyed black cat lying on a bed"
+  />
+  <img
+    crossorigin="anonymous"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Kitten_Sibling_Pair.jpg/1920px-Kitten_Sibling_Pair.jpg"
+    class="mw-mmv-final-image jpg mw-mmv-dialog-is-open"
+    alt="A pair of sibling kittens from the same litter at 11 weeks old"
+    width="740"
+    height="464"
+  />
 </Collapse>
 <hr />
