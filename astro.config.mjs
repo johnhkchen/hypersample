@@ -8,10 +8,6 @@ import alpinejs from "@astrojs/alpinejs";
 export default defineConfig({
   integrations: [htmx(), mdx(), alpinejs()],
   markdown: {
-    shikiConfig: {
-      theme: "dracula",
-      langs: ['astro', 'html'],
-      wrap: true
-    }
+    syntaxHighlight: 'prism',
   }
 });

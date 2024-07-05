@@ -20,12 +20,15 @@ const { title, subtitle, date, url, slug } = Astro.props;
   <br />
   <div class="f-switch">
     <sub-title class="flex-grow:1">{subtitle}</sub-title>
-    <div class="f-row flex-grow:0 center" hx-boost="true">
+    <div class="f-row flex-grow:0 center" hx-boost="true" x-data="{ expanded: false }">
       <a
         class="chip ok"
+        style="text-decoration: none"
         href={`/til/${slug}/`}
         hx-target="closest .f-switch"
         hx-swap="afterend"
+        @click="expanded = !expanded"
+        x-show="!expanded"
       >
         Read
       </a>
