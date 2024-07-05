@@ -1,0 +1,19 @@
+---
+import { Prism } from "@astrojs/prism";
+import { getEntry } from "astro:content";
+
+const { entry } = Astro.props;
+const snippet = await getEntry("code", entry);
+
+let lang = "";
+let code = snippet.body;
+
+if (code.includes("```")) {
+  lang = code.split("\n")[0].slice(3).trim();
+  code = code.split("\n").slice(1, -2).join("\n");
+}
+---
+
+<figure>
+  <Prism lang={lang} code={code} />
+</figure>

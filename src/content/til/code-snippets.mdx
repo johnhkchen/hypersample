@@ -1,0 +1,43 @@
+---
+title: "Code Snippets"
+description: "Using Prism to format and display code"
+pubDate: "2024-07-05"
+url: "https://prismjs.com/#basic-usage"
+---
+
+It can be tricky to display code in a way that doesn't clash with the existing design.
+
+Thankfully, there are highlighters like [Prism](https://prismjs.com/). In fact, [Missing Style](https://missing.style/) comes with a readymade stylesheet just for it.
+
+<figure>
+```html
+<link rel="stylesheet" href="https://unpkg.com/missing.css@1.1.2/prism">
+```
+</figure>
+
+Although Astro uses another highlighter, Shiki, out of the box, we can set it up so that Markdown files' code blocks use the **\<Prism /\>** component.
+
+<figure>
+```js
+export default defineConfig({
+  integrations: [...],
+  markdown: {
+    syntaxHighlight: 'prism',
+  }
+});
+```
+</figure>
+
+Now, we just have a small issue...
+
+```rust
+println!("Code figures aren't consistent!");
+```
+
+The next trick was to use **.mdx** which let me inline the necessary **\<figure\>** element into my document.
+
+<figure>
+```python
+print("Now, isn't that better?");
+```
+</figure>
