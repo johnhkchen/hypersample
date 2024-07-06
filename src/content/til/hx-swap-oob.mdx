@@ -1,0 +1,94 @@
+---
+title: "HTMX Out-of-Bound Swaps"
+description: "Directing web traffic on a component-by-component basis"
+pubDate: "2024-07-06"
+url: "https://htmx.org/attributes/hx-swap-oob/"
+---
+
+At this point in building this site, I had a bit of an issue. While I wanted to use [`hx-boost`](https://htmx.org/attributes/hx-boost/) to create a snappy "Read More" feature on the article cards, I also needed flexibility on how the boosted page looked in the list view, compared to its standalone look.
+
+This produced some fairly... interesting results at first.
+
+
+<div class="box">
+  <strong class="block titlebar">
+    <div class="f-row">
+      <h3 class="flex-grow:1">Honey, I sent HTMX the whole page!</h3>
+      <p>2024-07-06</p>
+    </div>
+  </strong>
+  <br /> 
+  <div class="f-switch">
+    <sub-title class="flex-grow:1">Oh no, it's gone recursive!</sub-title>
+    <div class="f-row flex-grow:0 center">
+      <a href="https://htmx.org/attributes/hx-swap-oob/" aria-label="Explore">
+        <button class="iconbutton" type="button">→</button>
+      </a> 
+    </div>
+  </div>
+  <main>  
+  <header class="navbar">
+    <nav aria-label="Site sections">
+      <ul role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/til">TIL</a></li>
+        <li><a href="/grid">Grid</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <figure>
+  ```python
+  print("kind of weird, right?")
+  ```
+  </figure>
+  <footer>
+    <p><a href="https://github.com/johnhkchen/hypersample">Hypersample</a>, by <a href="https://jche1156.github.io">JCHE</a></p>
+  </footer>
+  </main>    
+</div>
+
+Maybe I could try to just send the bare fragment, but now the page is unstyled when viewed on its direct URL, as it's missing the necessary meta attributes.
+
+## htmx-swap-oob to the rescue!
+
+I just sprinkle `hx-swap-oob` directives in a couple places...
+
+<figure>
+```html
+<header class="navbar" hx-swap-oob="none">
+<div hx-swap-oob="none">
+  <h1>{post.data.title}</h1>
+  <p class="mono-font">{post.data.pubDate}</p>
+  <sub-title>{post.data.description}</sub-title>
+</div>
+<footer hx-swap-oob="none">
+```
+</figure>
+
+And now only the content gets boosted into the article list view. Nice.
+
+
+
+<div class="box">
+  <strong class="block titlebar">
+    <div class="f-row">
+      <h3 class="flex-grow:1">Happy Little Blog Card</h3>
+      <p>2024-07-06</p>
+    </div>
+  </strong>
+  <br />
+  <div class="f-switch">
+    <sub-title class="flex-grow:1">I'm only displaying what I need to!</sub-title> 
+    <div class="f-row flex-grow:0 center" hx-boost="true">
+      <a href="https://en.wikipedia.org/wiki/Don%27t_Make_Me_Think" aria-label="Explore"> 
+        <button class="iconbutton" type="button">→</button>
+      </a>
+    </div> 
+  </div>
+  <figure>
+  ```rust
+    print!("Now that's better!");
+  ```
+  </figure>
+</div>
