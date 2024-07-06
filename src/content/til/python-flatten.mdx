@@ -1,0 +1,33 @@
+---
+title: "flatten_nested_list.py"
+description: "Here's a neat bit of code to flatten a nested list in Python"
+pubDate: "2024-07-05"
+url: "https://stackoverflow.com/questions/73014753/how-to-make-a-flat-list-from-nested-lists"
+---
+
+<figure>
+```python
+def flatten(arg):
+  if isinstance(arg, list):
+    return [x for item in arg for x in flatten(item)]
+  return [arg]
+```
+</figure>
+
+Unpacked, it can look like this:
+
+<figure>
+```python
+def flatten(arg):
+  if isinstance(arg, list):
+    flatlist = []
+    for item in arg:
+      if isinstance(item, list):
+        for x in flatten(item):
+          flatlist.append(x)
+      else:
+        flatlist.append(item)
+    return flatlist
+  return arg
+```
+</figure>
