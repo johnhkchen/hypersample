@@ -10,7 +10,7 @@ const articles = allPosts.sort(newest).reverse();
 ---
 
 <Layout title="Today I learned">
-  <main>
+  <main x-data="{}" :class="window.innerWidth >= 640 || 'width:100%'">
     <h1>TIL about...</h1>
     {
       articles.map((p) => (
@@ -23,5 +23,6 @@ const articles = allPosts.sort(newest).reverse();
         />
       ))
     }
+    <span x-text="window.innerWidth"></span>
   </main>
 </Layout>

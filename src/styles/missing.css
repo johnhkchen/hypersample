@@ -565,8 +565,8 @@ hr {
 
 pre {
   font-family: var(--mono-font);
-  font-size: 1em;
-  line-height: var(--rhythm);
+  font-size: 0.7em;
+  line-height: 1;
   tab-size: 2;
   margin: var(--gap) 0;
   scrollbar-width: thin;

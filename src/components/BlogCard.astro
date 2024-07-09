@@ -10,7 +10,7 @@ interface Props {
 const { title, subtitle, date, url, slug } = Astro.props;
 ---
 
-<div class="box">
+<div class="box crowded">
   <strong class="block titlebar">
     <div class="f-row">
       <h3 class="flex-grow:1">{title}</h3>
@@ -20,7 +20,11 @@ const { title, subtitle, date, url, slug } = Astro.props;
   <br />
   <div class="f-switch">
     <sub-title class="flex-grow:1">{subtitle}</sub-title>
-    <div class="f-row flex-grow:0 center" hx-boost="true" x-data="{ expanded: false }">
+    <div
+      class="f-row flex-grow:0 center"
+      hx-boost="true"
+      x-data="{ expanded: false }"
+    >
       <a
         class="chip ok"
         style="text-decoration: none"
