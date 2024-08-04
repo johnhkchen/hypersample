@@ -842,7 +842,6 @@ input[type="button"],
   background: var(--interactive-bg);
   color: var(--fg);
   border: 1px solid var(--muted-fg);
-  box-shadow: 0 2px 4px -2px var(--fg);
   border-radius: var(--border-radius);
   justify-content: center;
   align-items: center;
@@ -891,13 +890,6 @@ input::file-selector-button:active {
   color: var(--muted-accent);
 }
 
-:is(button, input[type="submit"], input[type="reset"], input[type="button"], .\<button\>):hover,
-:is(button, input[type="submit"], input[type="reset"], input[type="button"], .\<button\>):focus-visible {
-  filter: brightness(1.1);
-  box-shadow: 0 3px 6px -2px var(--fg);
-  text-decoration: none;
-}
-
 :is(button, input[type="submit"], input[type="reset"], input[type="button"], .\<button\>):active {
   box-shadow: none;
 }
@@ -922,11 +914,6 @@ input::file-selector-button:active {
   box-shadow: 0 2px 4px -1px var(--fg) inset;
   background: var(--pressed-interactive-bg);
   color: var(--accent);
-}
-
-:is(button, input[type="submit"], input[type="reset"], input[type="button"], .\<button\>):where([aria-pressed="true"], [aria-expanded="true"]):hover,
-:is(button, input[type="submit"], input[type="reset"], input[type="button"], .\<button\>):where([aria-pressed="true"], [aria-expanded="true"]):focus-visible {
-  box-shadow: 0 1px 3px -1px var(--fg) inset;
 }
 
 :is(button, input[type="submit"], input[type="reset"], input[type="button"], .\<button\>).big {
@@ -1106,7 +1093,6 @@ details,
   translate: 0 calc(-1px - var(--gap));
   background: var(--graphical-fg);
   color: var(--bg);
-  text-shadow: 0 .1em .2em var(--fg);
   border-bottom: 1px solid;
   border-bottom-color: inherit;
   margin-block-end: calc(0px - var(--gap));
@@ -1517,7 +1503,7 @@ button.iconbutton[aria-pressed="true"] {
 
 @media (prefers-color-scheme: dark) {
   :root:not(.-no-dark-theme) {
-    --fg: var(--gray-0);
+    --fg: var(--gray-3);
     --muted-fg: var(--gray-2);
     --faded-fg: var(--gray-7);
     --plain-bg: var(--gray-11);
@@ -1530,7 +1516,7 @@ button.iconbutton[aria-pressed="true"] {
     --ok-faded-fg: var(--green-6);
     --bad-faded-fg: var(--red-6);
     --warn-faded-fg: var(--yellow-6);
-    --bg: var(--gray-12);
+    --bg: var(--gray-11);
     --box-bg: var(--gray-10);
     --interactive-bg: var(--gray-8);
     --plain-fg: (--blue-2);
@@ -1538,7 +1524,7 @@ button.iconbutton[aria-pressed="true"] {
     --ok-fg: var(--green-2);
     --bad-fg: var(--red-2);
     --warn-fg: var(--yellow-2);
-    --accent: var(--blue-2);
+    --accent: var(--blue-4);
     --muted-accent: var(--blue-5);
   }
 }
